@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PVZW | XServer</title>
+    <style>
+        /* ===== 通用背景 & 淡入 ===== */
+        body {
+            margin: 0;
+            background-image: url('main.PNG');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== 导航栏（同 index） ===== */
+        .header {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .center-logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .center-logo img {
+            width: 80px;
+            height: 80px;
+            display: block;
+        }
+        .header nav {
+            margin-left: auto;
+            margin-right: 10px;
+            display: flex;
+            gap: 20px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+        .header nav a:hover { color: #00ff00; }
+
+        /* ===== 展示区 ===== */
+        .showcase {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        .showcase img {
+            width: 240px;
+            height: auto;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        .info h2 {
+            margin: 0 0 10px;
+            font-size: 26px;
+            color: #222;
+        }
+        .info p {
+            margin: 0;
+            line-height: 1.5;
+            color: #444;
+        }
+        .info a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .info a:hover { text-decoration: underline; }
+
+        /* ===== 页脚 ===== */
+        #footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: white;
+        }
+        #footer a {
+            text-decoration: none;
+            color: #000080;
+        }
+        #footer a:hover {
+            text-decoration: underline;
+            color: #0000ff;
+        }
+
+        /* ===== 切换背景按钮 ===== */
+        .bg-rotator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background .3s;
+        }
+        .bg-rotator:hover { background: rgba(0, 0, 0, .7); }
+
+        /* ===== 手机端自动堆叠 ===== */
+        @media (max-width: 600px) {
+            .showcase { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="header">
+        <div class="center-logo">
+            <img src="logo.PNG" alt="XServer Logo">
+        </div>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="work.html">作品</a>
+            <a href="wiki.html">维基百科</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html.html">联系我们</a>
+        </nav>
+    </div>
+
+    <!-- 切换背景 -->
+    <button class="bg-rotator" onclick="rotateBg()">切换背景</button>
+    <script>
+        const bgList = ['main.PNG', 'bg1.webp', 'bg2.webp', 'bg3.webp'];
+        let bgIndex = 0;
+        function rotateBg() {
+            bgIndex = (bgIndex + 1) % bgList.length;
+            document.body.style.backgroundImage = 'url(' + bgList[bgIndex] + ')';
+        }
+    </script>
+
+    <!-- 展示区 -->
+    <div class="showcase">
+        <img src="pvzw_cover.png" alt="PVZW 封面">
+        <div class="info">
+            <h2>Plant vs Zombie World（PVZW）</h2>
+            <p>
+                一个别样的植物大战僵尸世界！
+                <br>
+                <a href="https://www.mcmod.cn/modpack/1195.html" target="_blank">前往 mcmod 页面 →</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div id="footer">
+        <p>XServer</p>
+        <a href="https://rainyun.com">友情链接</a>
+    </div>
+</body>
+</html>

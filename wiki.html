@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XServer - 维基百科</title>
+    <style>
+        body {
+            margin: 0;
+            background-image: url('main.PNG');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 导航栏：相对定位，供 logo 绝对居中 */
+        .header {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo 绝对居中 */
+        .center-logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+        }
+        .center-logo img {
+            width: 80px;
+            height: 80px;
+            display: block;
+        }
+
+        /* 导航按钮 */
+        .header nav {
+            margin-left: auto;
+            margin-right: 10px;
+            display: flex;
+            gap: 20px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color .3s;
+        }
+        .header nav a:hover { color: #00ff00; }
+
+        /* 正文卡片 */
+        .content {
+            max-width: 760px;
+            margin: 30px auto;
+            padding: 15px;
+            line-height: 1.3;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            color: #333;
+            transition: background-color .5s, transform .5s;
+        }
+        .content:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(1.02);
+        }
+
+        /* 页脚 */
+        #footer {
+            background-color: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            color: white;
+        }
+        #footer a {
+            text-decoration: none;
+            color: #000080;
+        }
+        #footer a:hover {
+            text-decoration: underline;
+            color: #0000ff;
+        }
+
+        /* 背景切换按钮 */
+        .bg-rotator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            background: rgba(0, 0, 0, .5);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 14px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background .3s;
+        }
+        .bg-rotator:hover { background: rgba(0, 0, 0, .7); }
+    </style>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <div class="header">
+        <div class="center-logo">
+            <img src="logo.PNG" alt="XServer Logo">
+        </div>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="work.html">作品</a>
+            <a href="wiki.html">维基百科</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html.html">联系我们</a>
+        </nav>
+    </div>
+
+    <!-- 切换背景按钮 -->
+    <button class="bg-rotator" onclick="rotateBg()">切换背景</button>
+    <script>
+        const bgList = ['main.PNG', 'bg1.webp', 'bg2.webp', 'bg3.webp'];
+        let bgIndex = 0;
+        function rotateBg() {
+            bgIndex = (bgIndex + 1) % bgList.length;
+            document.body.style.backgroundImage = 'url(' + bgList[bgIndex] + ')';
+        }
+    </script>
+
+    <!-- 正文 -->
+    <div class="content">
+        <p style="font-size:30px;">欢迎来到维基百科</p>
+        <p></p>
+    </div>
+
+    <!-- 页脚 -->
+    <div id="footer">
+        <p>XServer</p>
+        <a href="https://rainyun.com">友情链接</a>
+    </div>
+</body>
+</html>
